@@ -18,20 +18,30 @@ public class ServicioMusica  extends Service {
                 Toast.LENGTH_SHORT).show();
         reproductor = MediaPlayer.create(this, R.raw.audio);
     }
-    @Override
+
+    /*@Override
     public int onStartCommand(Intent intent, int flags,
                               int idArranque) {
         Toast.makeText(this,"Servicio arrancado "+ idArranque,
                 Toast.LENGTH_SHORT).show();
         reproductor.start();
         return START_STICKY;
+    }*/
+
+    @Override
+    public void onStart(Intent intent, int startId) {
+        Toast.makeText(this, "Servicio arrancado " +
+                startId, Toast.LENGTH_SHORT).show();
+        reproductor.start();
     }
+
     @Override
     public void onDestroy() {
         Toast.makeText(this,"Servicio detenido",
                 Toast.LENGTH_SHORT).show();
         reproductor.stop();
     }
+
     @Override
     public IBinder onBind(Intent intent) {
         // TODO: Return the communication channel to the service.
